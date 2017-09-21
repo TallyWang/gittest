@@ -7,5 +7,4 @@ import com.google.gson.JsonObject;
 
 public class CacheBean {
 	public static Map<String,JsonObject> XiaoiRobotCache = new HashMap<>();
-//	暫存我們輸入的值
 }

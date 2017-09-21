@@ -18,15 +18,16 @@ public class GetEndPathMsgData {
 		String DBUrl = Util.getRobot_DB_URL();
 		String DBUser = Util.getRobot_DB_USER();
 		String DBPassword = Util.getRobot_DB_PASS();
-		String Sql = "Select * from ex_EndPathMsg where type='"+aType+"' and commandname='"+aCommandname+"'";
+		
+		String Sql = "Select * from ex_EndPathMsg where type='"+ aType +"' and commandname='"+ aCommandname +"'";
 
-		mylogger.info("getEndPathMsgData - Sql: "+Sql);
+		mylogger.info("getEndPathMsgData - Sql: " + Sql);
 		
 		JsonArray EndPathMsgData = null;
 		try {
 			EndPathMsgData = GetTableData.getTableDataFromSql2O(DBDriver, Sql, DBUrl, DBUser, DBPassword);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		return EndPathMsgData;

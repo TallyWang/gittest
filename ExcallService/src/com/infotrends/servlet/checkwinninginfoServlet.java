@@ -58,13 +58,18 @@ public class checkwinninginfoServlet extends HttpServlet {
 		// 取得Body內容(JSON)
 		resp.setContentType("application/json; charset=UTF-8");
 		resp.setCharacterEncoding("UTF-8");
+		
 		PrintWriter printwriter = resp.getWriter();
 		BufferedReader reader = req.getReader();
+		
 		String input = null;
+		
 		StringBuilder requestBodyBuilder = new StringBuilder();
+		
 		while ((input = reader.readLine()) != null) {
 			requestBodyBuilder.append(input.trim());
 		}
+		
 		String requestBody = requestBodyBuilder.toString().trim();
 
 		// 解析Body(JSON)

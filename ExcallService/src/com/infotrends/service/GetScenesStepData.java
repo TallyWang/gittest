@@ -23,15 +23,18 @@ public class GetScenesStepData {
 		String DBUrl = Util.getRobot_DB_URL();
 		String DBUser = Util.getRobot_DB_USER();
 		String DBPassword = Util.getRobot_DB_PASS();
+		
 		String Sql = "Select * from ex_ScenesStep where dbid='"+aStepId+"'";
 
-		mylogger.info("getScenesStepData - Sql: "+Sql);
+		mylogger.info("getScenesStepData - Sql: " + Sql);
+		System.out.println("getScenesStepData - Sql: " + Sql);
 		
 		JsonArray ScenesStepData = null;
 		try {
 			ScenesStepData = GetTableData.getTableDataFromSql2O(DBDriver, Sql, DBUrl, DBUser, DBPassword);
+			mylogger.info("ScenesStepData - Sql: " + ScenesStepData);
+			System.out.println("ScenesStepData - Sql: " + ScenesStepData);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ScenesStepData;

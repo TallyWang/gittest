@@ -19,19 +19,23 @@ public class GetScenesPlanData {
 //		String DBUrl = "jdbc:jtds:sqlserver://192.168.10.42:1433;databaseName=RobotDemo";
 //		String DBUser = "sa";
 //		String DBPassword = "password";
+		
 		String DBDriver = Util.getRobot_DB_Driver();
 		String DBUrl = Util.getRobot_DB_URL();
 		String DBUser = Util.getRobot_DB_USER();
 		String DBPassword = Util.getRobot_DB_PASS();
+		
 		String Sql = "Select * from ex_ScenesPlan where planname='"+aPlanName+"'";
 
-		mylogger.info("getScenesPlanData - Sql: "+Sql);
+		mylogger.info("getScenesPlanData - Sql: " + Sql);
 		
 		JsonArray ScenesPlanData = null;
 		try {
 			ScenesPlanData = GetTableData.getTableDataFromSql2O(DBDriver, Sql, DBUrl, DBUser, DBPassword);
+			System.out.println(ScenesPlanData.toString());
+			mylogger.info("ScenesPlanData - Sql: " + ScenesPlanData);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		return ScenesPlanData;

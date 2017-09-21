@@ -50,14 +50,12 @@ public class ExcallServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		super.doGet(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		// super.doPost(req, resp);
 
 		JSONObject ResponseJsonObject = new JSONObject();
@@ -65,18 +63,24 @@ public class ExcallServlet extends HttpServlet {
 		// 取得Body內容(JSON)
 		resp.setContentType("application/json; charset=UTF-8");
 		resp.setCharacterEncoding("UTF-8");
+		
 		PrintWriter printwriter = resp.getWriter();
 		BufferedReader reader = req.getReader();
+		
 		String input = null;
+		
 		StringBuilder requestBodyBuilder = new StringBuilder();
 		while ((input = reader.readLine()) != null) {
 			requestBodyBuilder.append(input.trim());
 		}
+		
 		String requestBody = requestBodyBuilder.toString().trim();
 
 		// 解析Body(JSON)
 		JSONObject jsonobject = new JSONObject(requestBody);
 		String sessionId = jsonobject.getString("sessionId");
+		String platform = jsonobject.getString("platform");
+		System.out.println(sessionId);
 		
 		//Do Service
 		JsonObject cacheJsonObject = new JsonObject();
@@ -108,6 +112,11 @@ public class ExcallServlet extends HttpServlet {
 		mylogger.info("ExcallServlet - RuleId: "+RuleId);
 		mylogger.info("ExcallServlet - NextFunction: "+NextFunction);
 		
+		System.out.println("ExcallServlet - NextFunction: " + NextFunction);
+		System.out.println("ExcallServlet - stepId: "+ stepId);
+		System.out.println("ExcallServlet - RuleId: "+ RuleId);
+		System.out.println("ExcallServlet - NextFunction: "+ NextFunction);
+		
 		//取得指令名稱(以了解進入哪一個流程計畫)
 		if(jsonobject.has("command")){
 			planName = jsonobject.getString("command");
@@ -125,6 +134,7 @@ public class ExcallServlet extends HttpServlet {
 			// Query ScenesPlanData
 			JsonArray ScenesPlanData  = GetScenesPlanData.getScenesPlanData(planName);
 			mylogger.info("ExcallServlet - ScenesPlanData: "+ScenesPlanData);
+			
 			for(JsonElement ScenesPlan : ScenesPlanData){
 				JsonObject ScenesPlanJsonObject = ScenesPlan.getAsJsonObject();
 				mylogger.info("ExcallServlet - ScenesPlanJsonObject: "+ScenesPlanJsonObject);
@@ -141,11 +151,14 @@ public class ExcallServlet extends HttpServlet {
 			// Query ScenesStepData
 			JsonArray ScenesStepData = GetScenesStepData.getScenesStepData(stepId);
 			mylogger.info("ExcallServlet - ScenesStepData: "+ScenesStepData);
+			
 			for(JsonElement ScenesStep : ScenesStepData){
 				JsonObject ScenesStepJsonObject = ScenesStep.getAsJsonObject();
 				mylogger.info("ExcallServlet - ScenesStepJsonObject: "+ScenesStepJsonObject);
+				
 				RuleId = ScenesStepJsonObject.get("ruleid").getAsString();
 				StepName = ScenesStepJsonObject.get("stepname").getAsString();
+				
 				//未來使用參數
 				steptimeout = ScenesStepJsonObject.get("timeout").getAsString();
 				steptimeoutcount = ScenesStepJsonObject.get("timeoutcount").getAsString();
@@ -164,6 +177,7 @@ public class ExcallServlet extends HttpServlet {
 		dataCache.addProperty(StepName, jsonobject.getString("content"));
 		dataCache.addProperty("planname", planName);
 		dataCache.addProperty("sessionId", sessionId);
+		dataCache.addProperty("platform", platform);
 		
 		JsonObject ruleRespJsonObject = new JsonObject();
 		String rulenextsteptype = null;

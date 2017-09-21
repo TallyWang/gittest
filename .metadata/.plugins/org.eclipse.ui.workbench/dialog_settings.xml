@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="495" key="DIALOG_X_ORIGIN"/>
+		<item value="57" key="DIALOG_Y_ORIGIN"/>
+	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
 		<item value="747" key="dialogHeight"/>
 		<item value="1440" key="dialogWidth"/>
@@ -13,16 +17,22 @@
 		</list>
 	</section>
 	<section name="ImportExportAction">
+		<item value="org.eclipse.ui.wizards.import.ExternalProject" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
 	</section>
 	<section name="ShowViewDialog">
 		<item value="405" key="DIALOG_WIDTH"/>
 		<item value="1|Microsoft JhengHei UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft JhengHei UI" key="DIALOG_FONT_NAME"/>
-		<item value="org.eclipse.egit.ui.InteractiveRebaseView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
+		<item value="org.eclipse.ui.views.ProgressView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
 		<item value="473" key="DIALOG_HEIGHT"/>
 		<item value="767" key="DIALOG_X_ORIGIN"/>
 		<item value="209" key="DIALOG_Y_ORIGIN"/>
 		<list key="ShowViewDialog.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.egit.ui.GitCategory"/>
+			<item value="org.eclipse.ui"/>
+			<item value="org.eclipse.jdt.ui.java.browsing"/>
+			<item value="org.eclipse.jst.ws.jwst.ui"/>
 		</list>
 	</section>
 </section>

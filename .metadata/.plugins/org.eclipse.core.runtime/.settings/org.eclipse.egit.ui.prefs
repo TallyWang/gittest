@@ -1,2 +1,5 @@
-commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>\#second commit</message>\r\n<message>\#first commit&\#x0A;</message>\r\n</messages>
+commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>\#TASK - 010101</message>\r\n<message>\#second commit</message>\r\n<message>\#first commit&\#x0A;</message>\r\n</messages>
 eclipse.preferences.version=1
+resourcehistory_graph_split=500,500
+resourcehistory_rev_split=448,549
+resourcehistory_show_all_branches=true
