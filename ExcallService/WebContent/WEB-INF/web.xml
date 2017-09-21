@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>ExcallService</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<listener>
+		<listener-class>com.infotrends.filter.SystemListener</listener-class>
+	</listener>
+	
+	<context-param>
+		<param-name>Robot_DB_Driver</param-name>
+<!-- 		<param-value>net.sourceforge.jtds.jdbc.Driver</param-value> -->
+		<param-value>oracle.jdbc.driver.OracleDriver</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>Robot_DB_URL</param-name>
+<!-- 		<param-value>jdbc:jtds:sqlserver://ws.crm.com.tw:1433;databaseName=FETRobot</param-value> -->
+<!-- 		<param-value>jdbc:oracle:thin:@10.64.35.83:1525:ESDB</param-value> --><!-- 遠傳 -->
+		<param-value>jdbc:oracle:thin:@192.168.10.47:1521:XE</param-value> <!-- 公司 -->
+	</context-param>
+	
+	<context-param>
+		<param-name>Robot_DB_USER</param-name>
+<!-- 		<param-value>sa</param-value> --> <!-- 連公司MS SQL Server -->
+<!-- 		<param-value>irobot</param-value> --><!-- 連遠傳Oracle -->
+		<param-value>robot</param-value><!-- 連公司Oracle -->
+	</context-param>
+	
+	<context-param>
+		<param-name>Robot_DB_PASS</param-name>
+<!-- 		<param-value>password</param-value> -->
+<!-- 		<param-value>irobot</param-value> -->
+		<param-value>robot</param-value><!-- 連公司Oracle -->
+	</context-param>
+	
+	<!-- 連到tomcat或機器人 -->
+	<context-param>
+		<param-name>ProjectPath</param-name>
+		<param-value>http://localhost:8080</param-value><!-- 本機測試 -->
+<!-- 		<param-value>http://10.64.70.46:8002</param-value> --><!--遠傳  -->
+<!-- 		<param-value>http://ws.crm.com.tw:8002</param-value> --><!-- 公司 -->
+	</context-param>
+
+<!-- 	Excall -->
+	<servlet>
+		<servlet-name>ExcallServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.ExcallServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExcallServlet</servlet-name>
+		<url-pattern>/excall</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ExcallClearServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.ExcallClearServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExcallClearServlet</servlet-name>
+		<url-pattern>/excallclear</url-pattern>
+	</servlet-mapping>
+	
+<!-- 	main service -->
+	<servlet>
+		<servlet-name>noserviceServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.noserviceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>noserviceServlet</servlet-name>
+		<url-pattern>/noservice</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>fetnetverifyServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.fetnetverifyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fetnetverifyServlet</servlet-name>
+		<url-pattern>/fetnetverify</url-pattern>
+	</servlet-mapping>
+
+<!-- 	Profession Service -->
+	<servlet>
+		<servlet-name>checkphonenumServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.checkphonenumServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>checkphonenumServlet</servlet-name>
+		<url-pattern>/checkphonenum</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>checkhaspwServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.checkhaspwServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>checkhaspwServlet</servlet-name>
+		<url-pattern>/checkhaspw</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>checkpwServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.checkpwServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>checkpwServlet</servlet-name>
+		<url-pattern>/checkpw</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>checkpaymoneyServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.checkpaymoneyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>checkpaymoneyServlet</servlet-name>
+		<url-pattern>/checkpaymoney</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>checknumbertypeServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.checknumbertypeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>checknumbertypeServlet</servlet-name>
+		<url-pattern>/checknumbertype</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>checkwinninginfoServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.checkwinninginfoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>checkwinninginfoServlet</servlet-name>
+		<url-pattern>/checkwinninginfo</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>entercheckServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.entercheckServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>entercheckServlet</servlet-name>
+		<url-pattern>/entercheck</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>dynamicVerifyServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.dynamicVerifyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dynamicVerifyServlet</servlet-name>
+		<url-pattern>/dynamicverify</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>dynamicVerifyCheckServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.dynamicVerifyCheckServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dynamicVerifyCheckServlet</servlet-name>
+		<url-pattern>/dynamicverifycheck</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ganpnewnumberorcarryServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.ganpnewnumberorcarryServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ganpnewnumberorcarryServlet</servlet-name>
+		<url-pattern>/numberorcarry</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ganpjudgmentServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.ganpjudgmentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ganpjudgmentServlet</servlet-name>
+		<url-pattern>/ganpjudgment</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ganpenternameServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.ganpenternameServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ganpenternameServlet</servlet-name>
+		<url-pattern>/ganpentername</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ganpenterphoneServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.ganpenterphoneServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ganpenterphoneServlet</servlet-name>
+		<url-pattern>/ganpenterphone</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ganpchangetimeServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.ganpchangetimeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ganpchangetimeServlet</servlet-name>
+		<url-pattern>/ganpchangetime</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ganpittorderServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.ganpittorderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ganpittorderServlet</servlet-name>
+		<url-pattern>/ganpittorder</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ganpcarryServlet</servlet-name>
+		<servlet-class>com.infotrends.servlet.ganpcarryServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ganpcarryServlet</servlet-name>
+		<url-pattern>/ganpcarry</url-pattern>
+	</servlet-mapping>
+</web-app>
