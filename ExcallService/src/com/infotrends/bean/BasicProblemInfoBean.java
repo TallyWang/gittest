@@ -1,5 +1,5 @@
 package com.infotrends.bean;
-
+ 
 public class BasicProblemInfoBean {
 	private String PhoneNumber;
 	private String Date;

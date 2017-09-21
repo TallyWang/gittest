@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<list key="CommitDialog.authorValues">
+		<item value="Lichia &lt;Lichia@LAPTOP-GSFBS6OM&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="Lichia &lt;Lichia@LAPTOP-GSFBS6OM&gt;"/>
+	</list>
 	<section name="GitCommitMessageComponent">
 	</section>
 </section>
